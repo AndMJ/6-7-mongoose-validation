@@ -1,7 +1,7 @@
 {
   "name": "6-7-mongoose-validation",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "demo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

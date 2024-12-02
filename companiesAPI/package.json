@@ -1,0 +1,22 @@
+{
+  "name": "companiesapi",
+  "version": "1.0.0",
+  "main": "assignment-6.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config ./assignment-6.js",
+    "start": "node -r dotenv/config ./assignment-6.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "config": "^3.3.12",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "helmet": "^8.0.0",
+    "joi": "^17.13.3",
+    "mongoose": "^8.8.3",
+    "nodemon": "^3.1.7"
+  }
+}
