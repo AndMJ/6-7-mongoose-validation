@@ -68,5 +68,9 @@ const course = {
 createCourse(course).then(result => {
     console.log("saved", result)
 }).catch(e => {
-    console.log(e.message)
+    //iterate over the .errors and display the message from each error
+    for (let error in e.errors) {
+        console.log(e.errors[error].message)
+    }
+
 })
