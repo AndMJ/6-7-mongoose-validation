@@ -1,3 +1,5 @@
+### (still using MVC principle)
+
 ### Assignment 6: Project - Add Persistence to Companies API
 In the companies module, we used an array to keep all the companies in our application. As you have learned MongoDB and mongoose, I want you to get rid of the companies array. And, in all the route handlers (like get, post etc.), work with our MongoDB database.
 
