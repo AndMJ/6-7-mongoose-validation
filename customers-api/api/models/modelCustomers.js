@@ -11,7 +11,13 @@ module.exports = () => {
     //schema and model mapping
     const Customer = mongoose.model("Customers", new mongoose.Schema({
         name: {type: String, required: true},
-        phone: {type: String, required: true},
+        phone: {
+            type: String,
+            validate: {
+                validator: /^(\+?351)?9\d\d{7}$/
+            },
+            required: true
+        },
         isPrime: {type: Boolean, required: true}
     }))
 
@@ -34,7 +40,11 @@ module.exports = () => {
 
     model.create = async (data) => {
         try {
-            const newCustomer = new Customer({...data})
+            const newCustomer = new Customer({
+                name: data.name,
+                phone: data.phone,
+                isPrime: data.isPrime
+            })
             return await newCustomer.save()
         } catch (e) {
             return e
@@ -43,26 +53,19 @@ module.exports = () => {
 
     model.editByID = async (id, data) => {
         try {
-            const result = await Customer.findByIdAndUpdate(id, {...data})
-            return result
+            const result = await Customer.findById(id)
+            result.name = data.name
+            result.phone = data.phone
+            result.isPrime = data.isPrime
+
+            return result.save()
         } catch (e) {
             return e
         }
     }
 
-    /*model.patchByID = async (id, data) => {
-        try {
-            /!*const newCustomer = new Customer({...data})
-            return await newCustomer.save()*!/
-        } catch (e) {
-            return e
-        }
-    }*/
-
     model.deleteByID = async (id) => {
         try {
-            /*const newCustomer = new Customer({...data})
-            return await newCustomer.save()*/
             return await Customer.findByIdAndDelete(id)
         } catch (e) {
             return e

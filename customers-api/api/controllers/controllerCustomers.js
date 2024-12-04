@@ -38,9 +38,14 @@ module.exports = () => {
             )
             return res.status(200).json(data)
         } catch (e) {
-            return res.status(404).json({
+            const errorList = []
+            for(let err in e.errors){
+                errorList.push(err)
+            }
+
+            return res.status(404).json({ //TODO: error is returning as code 200 ????????????
                 code: 404,
-                message: e.message
+                message: errorList
             })
         }
     }
