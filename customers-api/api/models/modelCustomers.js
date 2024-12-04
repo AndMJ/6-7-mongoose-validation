@@ -41,25 +41,24 @@ module.exports = () => {
         }
     }
 
-    model.editByID = async (data) => {
+    model.editByID = async (id, data) => {
         try {
-            /*const newCustomer = new Customer({...data})
-            return await newCustomer.save()*/
+            return await Customer.findByIdAndUpdate(id, {...data})
         } catch (e) {
             return e
         }
     }
 
-    model.patchByID = async (data) => {
+    /*model.patchByID = async (id, data) => {
         try {
-            /*const newCustomer = new Customer({...data})
-            return await newCustomer.save()*/
+            /!*const newCustomer = new Customer({...data})
+            return await newCustomer.save()*!/
         } catch (e) {
             return e
         }
-    }
+    }*/
 
-    model.deleteByID = async (data) => {
+    model.deleteByID = async (id) => {
         try {
             /*const newCustomer = new Customer({...data})
             return await newCustomer.save()*/
