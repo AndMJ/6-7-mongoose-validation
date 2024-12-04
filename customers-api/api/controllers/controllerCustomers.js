@@ -1,7 +1,7 @@
 module.exports = () => {
     const modelCustomers = require("../models/modelCustomers")()
 
-    const controller = {}
+    const controller = {} //TODO: error handling
     controller.getCustomersList = async (req, res) => {
         try {
             const data = await modelCustomers.getList()
@@ -46,14 +46,12 @@ module.exports = () => {
     }
 
     controller.editCustomer = async (req, res) => {
-        try {
-            const data = await modelCustomers.editByID(
-                req.params.id,
-                { //TODO: req.body?
-                    /*name: req.body.name.trim(),
+        try {/*name: req.body.name.trim(),
                     phone: req.body.phone.trim(),
                     isPrime: req.body.isPrime*/
-                }
+            //TODO: req.body?
+            const data = await modelCustomers.editByID(
+                req.params.id, req.body
             )
             return res.status(200).json(data)
         } catch (e) {

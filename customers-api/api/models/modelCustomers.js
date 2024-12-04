@@ -43,7 +43,8 @@ module.exports = () => {
 
     model.editByID = async (id, data) => {
         try {
-            return await Customer.findByIdAndUpdate(id, {...data})
+            const result = await Customer.findByIdAndUpdate(id, {...data})
+            return result
         } catch (e) {
             return e
         }
@@ -62,6 +63,7 @@ module.exports = () => {
         try {
             /*const newCustomer = new Customer({...data})
             return await newCustomer.save()*/
+            return await Customer.findByIdAndDelete(id)
         } catch (e) {
             return e
         }
