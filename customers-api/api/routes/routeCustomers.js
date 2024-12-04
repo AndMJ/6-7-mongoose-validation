@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const controller = require("../controllers/controllerCustomers")()
+    const controllerCustomers = require("../controllers/controllerCustomers")()
 
-    app.route("/api/v1/customers/list").get(controller.getCustomersList)
+    app.route("/api/v1/customers/list").get(controllerCustomers.getCustomersList)
 }

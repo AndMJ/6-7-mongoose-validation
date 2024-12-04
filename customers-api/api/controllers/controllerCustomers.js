@@ -1,9 +1,9 @@
 module.exports = () => {
-    const module = require("../models/modelCustomers")()
+    const modelCustomers = require("../models/modelCustomers")()
 
-    const controller = []
+    const controller = {}
     controller.getCustomersList = async (req, res) => {
-        const data = await module.getList()
+        const data = await modelCustomers.getList()
         return res.status(200).json(data)
     }
 

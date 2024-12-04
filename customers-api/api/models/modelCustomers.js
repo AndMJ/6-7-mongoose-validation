@@ -1,19 +1,28 @@
 const mongoose = require("mongoose")
-
-//connection
-/*const conn = mongoose.connect("mongodb://localhost:27017/playground")
-conn.then().catch(e => {
-    console.log("DB connection error", e)
-})*/
-
-//schema and model mapping
-
-
 module.exports = () => {
-    const module = []
-    module.getList = async () => {
-        return {name: "jorge", age: 12}
+    //connection
+    const conn = mongoose.connect("mongodb://localhost:27017/playground")
+    conn.then(() => {
+        console.log("db connection successful")
+    }).catch(e => {
+        console.log("db connection error", e.message)
+    })
+
+    //schema and model mapping
+    const Customer = mongoose.model("Customers", new mongoose.Schema({
+        name: String,
+        phone: String,
+        isPrime: Boolean
+    }))
+
+    const model = {}
+    model.getList = async () => {
+        try {
+            return await Customer.find()
+        } catch (e) {
+            return e
+        }
     }
 
-    return module
+    return model
 }
