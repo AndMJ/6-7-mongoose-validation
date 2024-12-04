@@ -10,15 +10,59 @@ module.exports = () => {
 
     //schema and model mapping
     const Customer = mongoose.model("Customers", new mongoose.Schema({
-        name: String,
-        phone: String,
-        isPrime: Boolean
+        name: {type: String, required: true},
+        phone: {type: String, required: true},
+        isPrime: {type: Boolean, required: true}
     }))
 
     const model = {}
     model.getList = async () => {
         try {
             return await Customer.find()
+        } catch (e) {
+            return e
+        }
+    }
+
+    model.getByID = async (id) => {
+        try {
+            return await Customer.find({_id: id})
+        } catch (e) {
+            return e
+        }
+    }
+
+    model.create = async (data) => {
+        try {
+            const newCustomer = new Customer({...data})
+            return await newCustomer.save()
+        } catch (e) {
+            return e
+        }
+    }
+
+    model.editByID = async (data) => {
+        try {
+            /*const newCustomer = new Customer({...data})
+            return await newCustomer.save()*/
+        } catch (e) {
+            return e
+        }
+    }
+
+    model.patchByID = async (data) => {
+        try {
+            /*const newCustomer = new Customer({...data})
+            return await newCustomer.save()*/
+        } catch (e) {
+            return e
+        }
+    }
+
+    model.deleteByID = async (data) => {
+        try {
+            /*const newCustomer = new Customer({...data})
+            return await newCustomer.save()*/
         } catch (e) {
             return e
         }
