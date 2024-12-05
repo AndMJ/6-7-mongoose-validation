@@ -13,9 +13,9 @@ module.exports = () => {
         name: {type: String, required: true},
         phone: {
             type: String,
-            validate: {
-                validator: /^(\+?351)?9\d\d{7}$/
-            },
+            /*validate: { //use Joi for validation so it isnt redundant
+                validator: /^(\+?351)?9\d\d{7}$/ //PT phone number
+            },*/
             required: true
         },
         isPrime: {type: Boolean, required: true}
