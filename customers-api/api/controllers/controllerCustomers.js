@@ -61,7 +61,7 @@ module.exports = () => {
                 errorList.push(err)
             }
 
-            return res.status(404).json({ //TODO: error is returning as code 200 ????????????
+            return res.status(404).json({
                 code: 404,
                 message: errorList
             })
@@ -72,7 +72,7 @@ module.exports = () => {
         try {/*name: req.body.name.trim(),
                     phone: req.body.phone.trim(),
                     isPrime: req.body.isPrime*/
-            //TODO: req.body?
+            //TODO: validate req.body
             const data = await modelCustomers.editByID(
                 req.params.id, req.body
             )
